@@ -13,9 +13,11 @@
 	double operand;
 	NSString *waitingOperation;
 	double waitingOperand;
+	double valueStoredInMemory;
 }
 
 - (void)setOperand:(double)anOperand;
 - (double)performOperation:(NSString *)operation;
+- (void)clearAll;
 
 @end

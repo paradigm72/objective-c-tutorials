@@ -31,11 +31,28 @@
 
 - (double)performOperation:(NSString *)operation
 {
-	if ([operation isEqual:@"sqrt"]) {
+	if ([operation isEqual:@"sqrt(x)"]) {
 		operand = sqrt(operand);
 	}
-	else if ([operation isEqual:@"^2"]) {
+	else if ([operation isEqual:@"x^2"]) {
 		operand = operand * operand;
+	}
+	else if ([operation isEqual:@"1/x"]) {
+		if (operand) {
+			operand = 1 / operand;
+		}
+		//how to raise an error?
+	}
+	else if ([operation isEqual:@"STORE"]) {
+		valueStoredInMemory = operand;
+	}
+	else if ([operation isEqual:@"RECALL"]) {
+		operand = valueStoredInMemory;
+	}
+	else if ([operation isEqual:@"MEM +"]) {
+		waitingOperation = @"+";
+		waitingOperand = valueStoredInMemory;
+		[self performWaitingOperation];
 	}
 	else {
 		[self performWaitingOperation];
@@ -43,6 +60,14 @@
 		waitingOperand = operand;
 	}
 	return operand;
+}
+
+- (void)clearAll
+{
+	operand = 0.0;
+	waitingOperation = nil;
+	waitingOperand = 0.0;
+	valueStoredInMemory = 0.0;
 }
 
 

@@ -52,6 +52,12 @@
 	[display setText:[NSString stringWithFormat:@"%g", result]];
 }
 
+- (IBAction)clearAll
+{
+	[[self brain] clearAll];
+	[display setText:nil];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
