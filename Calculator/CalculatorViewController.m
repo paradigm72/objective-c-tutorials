@@ -24,10 +24,32 @@
 	return brain;
 }
 
+- (BOOL)containsDecimalPoint:(NSString *)stringToCheck
+{
+	NSRange range = [stringToCheck rangeOfString:@"."];
+	if (range.location==NSNotFound) {
+		return NO;
+	}
+	else {
+		return YES;
+	}
+}
+
 - (IBAction)digitPressed:(UIButton *)sender
 {
 	//get the digit from the text of the button
 	NSString *digit = [[sender titleLabel] text];
+	
+	//if this is a decimal point, check whether it's ok to add
+	if ([digit isEqualToString:@"."]) {
+		if (alreadyHaveDecimalPoint) {
+			return;
+		}
+		else {
+			alreadyHaveDecimalPoint = YES;
+		}
+	}
+	
 	//if we're just adding digits, append to display delegate
 	if (userIsInTheMiddleOfTypingANumber) {
 		[display setText:[[display text] stringByAppendingString:digit]];
@@ -49,13 +71,24 @@
 	}
 	NSString *operation = [[sender titleLabel] text];
 	double result = [[self brain] performOperation:operation];
-	[display setText:[NSString stringWithFormat:@"%g", result]];
+
+	//NSNumberFormatter *formatter = [NSNumberFormatter new];
+	//NSString * stringResult = [formatter stringFromNumber:[NSNumber numberWithDouble:result]];
+	NSString* stringResult = [[NSNumber numberWithDouble:result] stringValue];
+	[display setText:stringResult];
+	if ([self containsDecimalPoint:stringResult]) {
+		alreadyHaveDecimalPoint = YES;
+	} else {
+		alreadyHaveDecimalPoint = NO;
+	}
 }
 
 - (IBAction)clearAll
 {
 	[[self brain] clearAll];
 	[display setText:nil];
+	alreadyHaveDecimalPoint = NO;
+	userIsInTheMiddleOfTypingANumber = NO;
 }
 
 - (void)viewDidLoad
