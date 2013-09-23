@@ -84,5 +84,15 @@
 	valueStoredInMemory = 0.0;
 }
 
+- (NSDictionary *)exportMemory
+{
+	NSDictionary *myMemoryContents = [[NSDictionary alloc] initWithObjectsAndKeys:
+									  @"operand", [NSString stringWithFormat:@"%g", operand],
+									  @"waiting operand", [NSString stringWithFormat:@"%g", waitingOperand],
+									  @"waiting operation", [NSString stringWithString:waitingOperation],
+									  nil];
+	return myMemoryContents;
+}
+
 
 @end

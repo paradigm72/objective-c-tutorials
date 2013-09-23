@@ -19,6 +19,7 @@
 
 - (void)setOperand:(double)anOperand;
 - (double)performOperation:(NSString *)operation withError:(NSError **)myError;
+- (NSDictionary *)exportMemory;
 - (void)clearAll;
 
 @end

@@ -96,6 +96,13 @@
 	userIsInTheMiddleOfTypingANumber = NO;
 }
 
+- (IBAction)updateMemoryDisplay
+{
+	NSDictionary *myMemoryCopy = [[self brain] exportMemory];
+	[memoryContents setText:myMemoryCopy[@"operand"]];
+	
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
