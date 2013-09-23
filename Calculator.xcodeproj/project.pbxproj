@@ -40,6 +40,7 @@
 		15B92D6317E63DA900386F7C /* CalculatorViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalculatorViewController.m; sourceTree = "<group>"; };
 		15B92D6A17E63EC100386F7C /* CalculatorBrain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalculatorBrain.h; sourceTree = "<group>"; };
 		15B92D6B17E63EC100386F7C /* CalculatorBrain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalculatorBrain.m; sourceTree = "<group>"; };
+		15B92D6D17EFE40F00386F7C /* CalculatorErrors.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalculatorErrors.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +95,7 @@
 				15B92D6A17E63EC100386F7C /* CalculatorBrain.h */,
 				15B92D6B17E63EC100386F7C /* CalculatorBrain.m */,
 				15B92D4E17E63DA900386F7C /* Supporting Files */,
+				15B92D6D17EFE40F00386F7C /* CalculatorErrors.h */,
 			);
 			path = Calculator;
 			sourceTree = "<group>";

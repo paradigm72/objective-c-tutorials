@@ -78,9 +78,14 @@
 		[[self brain] setOperand:[[display text] doubleValue]];
 		userIsInTheMiddleOfTypingANumber = NO;
 	}
+	NSError *myError;
 	NSString *operation = [[sender titleLabel] text];
-	double result = [[self brain] performOperation:operation];
 
+	double result = [[self brain] performOperation:operation
+										 withError:&myError];
+	if (myError.code == 0) {
+		[errors setText:[myError localizedDescription]];
+	}
 	[display setText:[NSString stringWithFormat:@"%g", result]];
 }
 

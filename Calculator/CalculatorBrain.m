@@ -7,6 +7,8 @@
 //
 
 #import "CalculatorBrain.h"
+#import "CalculatorErrors.h"
+#import <Foundation/Foundation.h>
 
 @implementation CalculatorBrain
 - (void)setOperand:(double)anOperand
@@ -14,7 +16,7 @@
 	operand = anOperand;
 }
 
-- (void)performWaitingOperation
+- (void)performWaitingOperation:(NSError **)myError
 {
 	if ([@"+" isEqual:waitingOperation]) {
 		operand = waitingOperand + operand;
@@ -26,10 +28,16 @@
 		if (operand) {
 			operand = waitingOperand / operand;
 		}
+		else {
+			NSDictionary *userInfo = @{NSLocalizedDescriptionKey: @"Tried to divide by zero"};
+			*myError = [NSError errorWithDomain:CalculatorErrorDomain
+										  code:DivideByZeroError
+									  userInfo:userInfo];
+		}
 	}
 }
 
-- (double)performOperation:(NSString *)operation
+- (double)performOperation:(NSString *)operation withError:(NSError **)myError
 {
 	if ([operation isEqual:@"sqrt(x)"]) {
 		operand = sqrt(operand);
@@ -41,7 +49,13 @@
 		if (operand) {
 			operand = 1 / operand;
 		}
-		//how to raise an error?
+		else {
+			NSDictionary *userInfo = @{NSLocalizedDescriptionKey: @"Tried to divide by zero"};
+			*myError = [NSError errorWithDomain:CalculatorErrorDomain
+												 code:DivideByZeroError
+											 userInfo:userInfo];
+		}
+
 	}
 	else if ([operation isEqual:@"STORE"]) {
 		valueStoredInMemory = operand;
@@ -52,10 +66,10 @@
 	else if ([operation isEqual:@"MEM +"]) {
 		waitingOperation = @"+";
 		waitingOperand = valueStoredInMemory;
-		[self performWaitingOperation];
+		[self performWaitingOperation:myError];
 	}
 	else {
-		[self performWaitingOperation];
+		[self performWaitingOperation:myError];
 		waitingOperation = operation;
 		waitingOperand = operand;
 	}

@@ -18,7 +18,7 @@
 }
 
 - (void)setOperand:(double)anOperand;
-- (double)performOperation:(NSString *)operation;
+- (double)performOperation:(NSString *)operation withError:(NSError **)myError;
 - (void)clearAll;
 
 @end

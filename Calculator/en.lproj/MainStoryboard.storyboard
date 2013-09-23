@@ -230,7 +230,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AAA-nc-Q5z">
-                                <color key="backgroundColor" red="1" green="0.62327106359999995" blue="0.38074389120000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="246" id="Ze6-tE-90S"/>
                                     <constraint firstAttribute="height" constant="34" id="dxA-Td-03t"/>
@@ -338,6 +338,15 @@
                                     <action selector="clearAll" destination="2" eventType="touchUpInside" id="89M-8E-2Zr"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text=" " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dKq-Xd-c8H">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="82c-YH-XUu"/>
+                                    <constraint firstAttribute="height" constant="21" id="zNC-fn-3se"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -389,12 +398,14 @@
                             <constraint firstItem="5Zb-Sb-gUY" firstAttribute="top" secondItem="GaK-ha-I47" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="gd1-kD-Lq4"/>
                             <constraint firstItem="izl-Gj-9MG" firstAttribute="leading" secondItem="wU2-a6-2fq" secondAttribute="leading" type="default" id="hWV-aC-1wT"/>
                             <constraint firstItem="2Xh-ry-3Dp" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="iKg-vl-CVu"/>
+                            <constraint firstItem="dKq-Xd-c8H" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="30" id="iOx-iM-YUV"/>
                             <constraint firstItem="Zhf-GG-vUa" firstAttribute="leading" secondItem="KJo-9t-RZq" secondAttribute="leading" type="default" id="ibT-lS-uKV"/>
                             <constraint firstItem="KJo-9t-RZq" firstAttribute="top" secondItem="5kf-cv-vKd" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="ieC-3L-wS4"/>
                             <constraint firstItem="k7I-qQ-gUX" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="iql-dE-xlC"/>
                             <constraint firstItem="tdN-hD-slg" firstAttribute="leading" secondItem="flM-se-vef" secondAttribute="leading" type="default" id="izg-DZ-0f9"/>
                             <constraint firstItem="5kf-cv-vKd" firstAttribute="leading" secondItem="Vuo-pl-60W" secondAttribute="leading" type="default" id="jj7-cs-xiT"/>
                             <constraint firstItem="ZEh-k0-zsH" firstAttribute="baseline" secondItem="2p7-PO-AU3" secondAttribute="baseline" type="default" id="kIv-85-YoB"/>
+                            <constraint firstItem="AAA-nc-Q5z" firstAttribute="top" secondItem="dKq-Xd-c8H" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="kX5-Qb-lgh"/>
                             <constraint firstItem="6X9-TY-oew" firstAttribute="leading" secondItem="Zhf-GG-vUa" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="l0E-5W-trU"/>
                             <constraint firstItem="ZEh-k0-zsH" firstAttribute="baseline" secondItem="2p7-PO-AU3" secondAttribute="baseline" priority="1" type="user" id="meZ-Qq-K7f"/>
                             <constraint firstItem="9CX-cG-I2C" firstAttribute="top" secondItem="ZEh-k0-zsH" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="mnJ-s9-7OV"/>
@@ -412,12 +423,29 @@
                     </view>
                     <connections>
                         <outlet property="display" destination="AAA-nc-Q5z" id="z6Z-UK-bef"/>
+                        <outlet property="errors" destination="dKq-Xd-c8H" id="LYV-fy-lEo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
     </scenes>
+    <classes>
+        <class className="CalculatorViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CalculatorViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="clearAll"/>
+                <relationship kind="action" name="decimalPointPressed"/>
+                <relationship kind="action" name="digitPressed:" candidateClass="UIButton"/>
+                <relationship kind="action" name="operationPressed:" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="display" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="errors" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
