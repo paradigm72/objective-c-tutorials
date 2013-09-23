@@ -266,7 +266,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="digitPressed:" destination="2" eventType="touchUpInside" id="wRk-WU-FVY"/>
+                                    <action selector="decimalPointPressed" destination="2" eventType="touchUpInside" id="7pu-1M-uXI"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZEh-k0-zsH">

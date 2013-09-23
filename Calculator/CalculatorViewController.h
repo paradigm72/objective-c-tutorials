@@ -14,7 +14,6 @@
 	IBOutlet UILabel *display;
 	CalculatorBrain *brain;
 	BOOL userIsInTheMiddleOfTypingANumber;
-	BOOL alreadyHaveDecimalPoint;
 }
 
 - (IBAction)digitPressed:(UIButton *)sender;
