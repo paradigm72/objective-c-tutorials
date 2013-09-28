@@ -49,6 +49,7 @@
 		[display setText:digit];
 		userIsInTheMiddleOfTypingANumber = YES;
 	}
+	[self updateMemoryDisplay];
 }
 
 - (IBAction)decimalPointPressed
@@ -69,6 +70,7 @@
 			userIsInTheMiddleOfTypingANumber = YES;
 		}
 	}
+	[self updateMemoryDisplay];
 }
 
 - (IBAction)operationPressed:(UIButton *)sender
@@ -87,6 +89,7 @@
 		[errors setText:[myError localizedDescription]];
 	}
 	[display setText:[NSString stringWithFormat:@"%g", result]];
+	[self updateMemoryDisplay];
 }
 
 - (IBAction)clearAll
@@ -96,10 +99,12 @@
 	userIsInTheMiddleOfTypingANumber = NO;
 }
 
-- (IBAction)updateMemoryDisplay
+- (void)updateMemoryDisplay
 {
 	NSDictionary *myMemoryCopy = [[self brain] exportMemory];
-	[memoryContents setText:myMemoryCopy[@"operand"]];
+	NSString *composedMemory = myMemoryCopy[@"operand"];
+	composedMemory = [composedMemory stringByAppendingString:myMemoryCopy[@"waiting operation"]];
+	[memoryContents setText:composedMemory];
 	
 }
 

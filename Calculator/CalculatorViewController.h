@@ -21,7 +21,6 @@
 - (IBAction)digitPressed:(UIButton *)sender;
 - (IBAction)operationPressed:(UIButton *)sender;
 - (IBAction)decimalPointPressed;
-- (IBAction)updateMemoryDisplay;
 - (IBAction)clearAll;
 
 @end
