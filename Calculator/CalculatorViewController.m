@@ -8,8 +8,8 @@
 
 #import "CalculatorViewController.h"
 
-@interface CalculatorViewController ()
-
+@interface CalculatorViewController()
+@property (readonly) CalculatorBrain *brain;
 @end
 
 @implementation CalculatorViewController
@@ -38,15 +38,15 @@
 - (IBAction)digitPressed:(UIButton *)sender
 {
 	//get the digit from the text of the button
-	NSString *digit = [[sender titleLabel] text];
+	NSString *digit = sender.titleLabel.text;
 	
 	//if we're just adding digits, append to display delegate
 	if (userIsInTheMiddleOfTypingANumber) {
-		[display setText:[[display text] stringByAppendingString:digit]];
+		display.text = [display.text stringByAppendingString:digit];
 	}
 	//otherwise, set the display delegate and set flag
 	else {
-		[display setText:digit];
+		display.text = digit;
 		userIsInTheMiddleOfTypingANumber = YES;
 	}
 	[self updateMemoryDisplay];
@@ -55,18 +55,18 @@
 - (IBAction)decimalPointPressed
 {
 	//check whether we already have a decimal point
-	if (userIsInTheMiddleOfTypingANumber && [self containsDecimalPoint:[display text]])
+	if (userIsInTheMiddleOfTypingANumber && [self containsDecimalPoint:display.text])
 	{
 		return;
 	}
 	else {
 		//if we're just adding digits, append to display delegate
 		if (userIsInTheMiddleOfTypingANumber) {
-			[display setText:[[display text] stringByAppendingString:@"."]];
+			display.text  = [display.text stringByAppendingString:@"."];
 		}
 		//otherwise, set the display delegate and set flag
 		else {
-			[display setText:@"."];
+			display.text = @".";
 			userIsInTheMiddleOfTypingANumber = YES;
 		}
 	}
@@ -77,34 +77,34 @@
 {
 	//if we were typing digits, and now hit an operator, go to waiting state
 	if (userIsInTheMiddleOfTypingANumber) {
-		[[self brain] setOperand:[[display text] doubleValue]];
+		self.brain.operand = display.text.doubleValue;
 		userIsInTheMiddleOfTypingANumber = NO;
 	}
 	NSError *myError;
-	NSString *operation = [[sender titleLabel] text];
+	NSString *operation = sender.titleLabel.text;
 
-	double result = [[self brain] performOperation:operation
-										 withError:&myError];
+	double result = [self.brain performOperation:operation
+									   withError:&myError];
 	if (myError.code == 0) {
-		[errors setText:[myError localizedDescription]];
+		errors.text = myError.localizedDescription;
 	}
-	[display setText:[NSString stringWithFormat:@"%g", result]];
+	display.text = [NSString stringWithFormat:@"%g", result];
 	[self updateMemoryDisplay];
 }
 
 - (IBAction)clearAll
 {
-	[[self brain] clearAll];
-	[display setText:nil];
+	[self.brain clearAll];
+	display.text = nil;
 	userIsInTheMiddleOfTypingANumber = NO;
 }
 
 - (void)updateMemoryDisplay
 {
-	NSDictionary *myMemoryCopy = [[self brain] exportMemory];
+	NSDictionary *myMemoryCopy = [self.brain exportMemory];
 	NSString *composedMemory = myMemoryCopy[@"operand"];
 	composedMemory = [composedMemory stringByAppendingString:myMemoryCopy[@"waiting operation"]];
-	[memoryContents setText:composedMemory];
+	memoryContents.text = composedMemory;
 	
 }
 

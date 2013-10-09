@@ -10,14 +10,12 @@
 
 @interface CalculatorBrain : NSObject
 {
-	double operand;
 	NSString *waitingOperation;
 	double waitingOperand;
 	double valueStoredInMemory;
-	
 }
 
-- (void)setOperand:(double)anOperand;
+@property double operand;
 - (double)performOperation:(NSString *)operation withError:(NSError **)myError;
 - (NSDictionary *)exportMemory;
 - (void)clearAll;
