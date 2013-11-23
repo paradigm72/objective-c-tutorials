@@ -81,15 +81,18 @@
 		userIsInTheMiddleOfTypingANumber = NO;
 	}
 	NSError *myError;
+	myError = [[NSError alloc] init];
+
 	NSString *operation = sender.titleLabel.text;
 
 	[self.brain performOperation:operation
-					   withError:&myError];
-	if (myError.code == 0) {
+					   withError:myError];
+	if (myError.code == DivideByZeroError) {
 		errors.text = myError.localizedDescription;
 	}
 	display.text = [NSString stringWithFormat:@"%g", self.brain.operand];
 	[self updateMemoryDisplay];
+	[myError release];
 }
 
 - (IBAction)clearAll
@@ -122,7 +125,8 @@
 
 - (void)dealloc
 {
-	//[brain release];
+	[brain release];
+	[super dealloc];
 }
 
 @end

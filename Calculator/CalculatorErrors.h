@@ -6,13 +6,13 @@
 //  Copyright (c) 2013 Paul Romine. All rights reserved.
 //
 
-#ifndef Calculator_CalculatorErrors_h
-#define Calculator_CalculatorErrors_h
+//#ifndef Calculator_CalculatorErrors_h
+//#define Calculator_CalculatorErrors_h
 
-NSString *CalculatorErrorDomain = @"com.letxbe.Calculator.ErrorDomain";
+extern NSString *CalculatorErrorDomain;
 
 enum {
-	DivideByZeroError
+	DivideByZeroError = 1
 };
 
-#endif
+//#endif

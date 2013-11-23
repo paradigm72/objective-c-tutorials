@@ -7,13 +7,11 @@
 //
 
 #import "CalculatorBrain.h"
-#import "CalculatorErrors.h"
-#import <Foundation/Foundation.h>
 
 @implementation CalculatorBrain
 @synthesize operand;
 
-- (void)performWaitingOperation:(NSError **)myError
+- (void)performWaitingOperation:(NSError *)myError
 {
 	if ([@"+" isEqual:waitingOperation]) {
 		operand = waitingOperand + operand;
@@ -27,14 +25,14 @@
 		}
 		else {
 			NSDictionary *userInfo = @{NSLocalizedDescriptionKey: @"Tried to divide by zero"};
-			*myError = [NSError errorWithDomain:CalculatorErrorDomain
+			myError = [NSError errorWithDomain:CalculatorErrorDomain
 										  code:DivideByZeroError
 									  userInfo:userInfo];
 		}
 	}
 }
 
-- (double)performOperation:(NSString *)operation withError:(NSError **)myError
+- (double)performOperation:(NSString *)operation withError:(NSError *)myError
 {
 	if ([operation isEqual:@"sqrt(x)"]) {
 		operand = sqrt(operand);
@@ -48,9 +46,9 @@
 		}
 		else {
 			NSDictionary *userInfo = @{NSLocalizedDescriptionKey: @"Tried to divide by zero"};
-			*myError = [NSError errorWithDomain:CalculatorErrorDomain
-												 code:DivideByZeroError
-											 userInfo:userInfo];
+			myError = [NSError errorWithDomain:CalculatorErrorDomain
+										   code:DivideByZeroError
+									   userInfo:userInfo];
 		}
 
 	}

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CalculatorErrors.h"
 
 @interface CalculatorBrain : NSObject
 {
@@ -16,7 +17,7 @@
 }
 
 @property double operand;
-- (double)performOperation:(NSString *)operation withError:(NSError **)myError;
+- (double)performOperation:(NSString *)operation withError:(NSError *)myError;
 - (NSDictionary *)exportMemory;
 - (void)clearAll;
 
