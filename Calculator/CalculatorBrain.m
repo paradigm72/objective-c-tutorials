@@ -83,7 +83,7 @@
 
 - (NSDictionary *)exportMemory
 {
-	if ((operand != 0.0) || (waitingOperation != nil)) {
+	if (((operand != 0.0) || (waitingOperand != 0.0)) && (waitingOperation != nil)) {
 		NSDictionary *myMemoryContents = [[NSDictionary alloc] initWithObjectsAndKeys:
 										  [NSString stringWithFormat:@"%g", operand], @"operand",
 										  [NSString stringWithFormat:@"%g", waitingOperand], @"waiting operand",

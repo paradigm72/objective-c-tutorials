@@ -83,12 +83,12 @@
 	NSError *myError;
 	NSString *operation = sender.titleLabel.text;
 
-	double result = [self.brain performOperation:operation
-									   withError:&myError];
+	[self.brain performOperation:operation
+					   withError:&myError];
 	if (myError.code == 0) {
 		errors.text = myError.localizedDescription;
 	}
-	display.text = [NSString stringWithFormat:@"%g", result];
+	display.text = [NSString stringWithFormat:@"%g", self.brain.operand];
 	[self updateMemoryDisplay];
 }
 
@@ -118,6 +118,11 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)dealloc
+{
+	//[brain release];
 }
 
 @end
