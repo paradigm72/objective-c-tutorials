@@ -32,7 +32,7 @@
 	}
 }
 
-- (double)performOperation:(NSString *)operation withError:(NSError *)myError
+- (double)performOperation:(NSString *)operation withError:(NSError **)myError
 {
 	if ([operation isEqual:@"sqrt(x)"]) {
 		operand = sqrt(operand);
@@ -46,7 +46,7 @@
 		}
 		else {
 			NSDictionary *userInfo = @{NSLocalizedDescriptionKey: @"Tried to divide by zero"};
-			myError = [NSError errorWithDomain:CalculatorErrorDomain
+			*myError = [NSError errorWithDomain:CalculatorErrorDomain
 										   code:DivideByZeroError
 									   userInfo:userInfo];
 		}
@@ -61,10 +61,10 @@
 	else if ([operation isEqual:@"MEM +"]) {
 		waitingOperation = @"+";
 		waitingOperand = valueStoredInMemory;
-		[self performWaitingOperation:myError];
+		[self performWaitingOperation:*myError];
 	}
 	else {
-		[self performWaitingOperation:myError];
+		[self performWaitingOperation:*myError];
 		waitingOperation = operation;
 		waitingOperand = operand;
 	}
