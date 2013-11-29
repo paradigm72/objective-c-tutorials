@@ -95,6 +95,17 @@
 	[myError release];
 }
 
+- (IBAction)setVariableAsOperand:(UIButton *)sender
+{
+	//do something with the title of the button that was clicked
+	[self.brain setVariableAsOperand:sender.titleLabel.text];
+}
+
+- (IBAction)evaluateTestExpressionPressed;
+{
+	//TODO figure out how to call evaluateExpression
+}
+
 - (IBAction)clearAll
 {
 	[self.brain clearAll];

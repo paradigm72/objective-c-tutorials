@@ -7,6 +7,7 @@
 //
 
 #import "CalculatorBrain.h"
+#define VARIABLE_PREFIX @"%"
 
 @implementation CalculatorBrain
 @synthesize operand;
@@ -91,6 +92,26 @@
 		return myMemoryContents;
 	}
 	return nil;
+}
+
+- (void)setVariableAsOperand:(NSString *)variableName
+{
+	NSString *stringForVariableOperand = VARIABLE_PREFIX;
+	stringForVariableOperand = [stringForVariableOperand stringByAppendingString:variableName];
+	//add this operand to the NSMutableArray representing our experession so far
+	[internalExpression addObject:stringForVariableOperand];
+}
+
++ (double)evaluateExpression:(id)anExpression usingVariableValues:(NSDictionary *)variables
+{
+	//TODO return the value of the evaluation
+	return 0.0;
+}
+
+- (id) expression {
+	NSMutableArray *expressionArrayCopy = [internalExpression copy];
+	[expressionArrayCopy autorelease];
+	return expressionArrayCopy;
 }
 
 
