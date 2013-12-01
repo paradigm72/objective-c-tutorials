@@ -102,10 +102,33 @@
 	[internalExpression addObject:stringForVariableOperand];
 }
 
++ (NSSet *)variablesInExpression:(id)anExpression
+{
+	NSMutableSet* mutableSetOfVariables;
+	
+	for (id thisElement in anExpression) {
+		if ([thisElement isKindOfClass:[NSString class]]) {
+			if ([thisElement isMatchedByRegex:@"^%[+.]"]) {
+				if (!mutableSetOfVariables) { mutableSetOfVariables = [[NSMutableSet alloc] init]; }
+				[mutableSetOfVariables addObject:thisElement];
+			}
+		}
+	}
+	NSSet* returnSet = [NSSet setWithSet:mutableSetOfVariables];
+	return returnSet;
+	[mutableSetOfVariables release];
+}
+
 + (double)evaluateExpression:(id)anExpression usingVariableValues:(NSDictionary *)variables
 {
 	//TODO return the value of the evaluation
 	return 0.0;
+}
+
++ (NSString *)descriptionOfExpression:(id)anExpression
+{
+	//TODO return a string for display that represents the expression array
+	return [NSString stringWithFormat:@"TODO"];
 }
 
 - (id) expression {
