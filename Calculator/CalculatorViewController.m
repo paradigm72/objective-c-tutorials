@@ -7,6 +7,7 @@
 //
 
 #import "CalculatorViewController.h"
+#define VARIABLE_PREFIX @"%"
 
 @interface CalculatorViewController()
 @property (readonly) CalculatorBrain *brain;
@@ -97,13 +98,27 @@
 
 - (IBAction)setVariableAsOperand:(UIButton *)sender
 {
-	//do something with the title of the button that was clicked
 	[self.brain setVariableAsOperand:sender.titleLabel.text];
 }
 
 - (IBAction)evaluateTestExpressionPressed;
 {
-	//TODO figure out how to call evaluateExpression
+	//set up a dictionary of test values
+	NSArray *objects = [NSArray arrayWithObjects:@"2", @"3", @"1.756", nil];
+	NSArray *keys = [NSArray arrayWithObjects:[NSString stringWithFormat:@"%@x", VARIABLE_PREFIX],
+											  [NSString stringWithFormat:@"%@x", VARIABLE_PREFIX],
+											  [NSString stringWithFormat:@"%@x", VARIABLE_PREFIX],
+											  nil];
+	NSDictionary *testValues = [[NSDictionary alloc] initWithObjects:objects
+															 forKeys:keys];
+	
+	//run the evaluation (class method)
+	[CalculatorBrain evaluateExpression:[self.brain expression]
+					usingVariableValues:testValues];
+	
+	[objects release];
+	[keys release];
+	[testValues release];
 }
 
 - (IBAction)clearAll

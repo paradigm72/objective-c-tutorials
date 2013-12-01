@@ -114,5 +114,11 @@
 	return expressionArrayCopy;
 }
 
+- (void) dealloc {
+	[waitingOperation release];
+	[internalExpression release];
+	[super dealloc];
+}
+
 
 @end
