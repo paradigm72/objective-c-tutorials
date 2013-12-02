@@ -119,16 +119,17 @@
 
 + (NSSet *)variablesInExpression:(id)anExpression
 {
-	NSMutableSet* mutableSetOfVariables;
+	NSMutableSet *mutableSetOfVariables = [[NSMutableSet alloc] init];
 	
 	for (id thisElement in anExpression) {
 		if ([thisElement isKindOfClass:[NSString class]]) {
-			if ([thisElement isMatchedByRegex:@"^%[+.]"]) {
-				if (!mutableSetOfVariables) { mutableSetOfVariables = [[NSMutableSet alloc] init]; }
-				[mutableSetOfVariables addObject:thisElement];
+			NSString *tempString = [NSString stringWithString:thisElement];
+			if ([tempString characterAtIndex:0] == '%') {
+				[mutableSetOfVariables addObject:tempString];
 			}
 		}
 	}
+	[mutableSetOfVariables autorelease];
 	return mutableSetOfVariables;
 }
 

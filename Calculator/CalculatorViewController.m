@@ -103,6 +103,9 @@
 	[self.brain setVariableAsOperand:sender.titleLabel.text];
 	//this string cannot matter, since this puts us into variable mode
 	[self updatePrimaryDisplayAndSetTypingNumberFlag:@"n/a"];
+	
+	//since the memory display is not active in variable mode, need to update it now
+	[self updateMemoryDisplay];
 }
 
 - (IBAction)evaluateTestExpressionPressed;
@@ -141,7 +144,7 @@
 	}
 	
 	//if we're just adding digits/decimalpoint, append to display delegate
-	if (userIsInTheMiddleOfTypingANumber) {
+	else if (userIsInTheMiddleOfTypingANumber) {
 		display.text  = [display.text stringByAppendingString:newText];
 	}
 	//otherwise, set the display delegate and set flag
