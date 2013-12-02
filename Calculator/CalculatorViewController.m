@@ -74,6 +74,17 @@
 	[self updateMemoryDisplay];
 }
 
+- (IBAction)binaryOperationPressed:(UIButton *)sender
+{
+	//filters out repeated presses of a binary operation, since there will not be two operands in that case
+	//behavior of repeated presses for those is undefined
+	if (!justPressedBinaryOperation)
+	{
+		[self operationPressed:sender];
+		justPressedBinaryOperation = YES;
+	}
+}
+
 - (IBAction)operationPressed:(UIButton *)sender
 {
 	//if we were typing digits, and now hit an operator, go to waiting state
@@ -126,15 +137,17 @@
 	[self.brain clearAll];
 	display.text = nil;
 	userIsInTheMiddleOfTypingANumber = NO;
+	[self updateMemoryDisplay];
 }
 
 - (void)updateMemoryDisplay
 {
 	NSDictionary *myMemoryCopy = [self.brain exportMemory];
 	NSString *composedMemory = myMemoryCopy[@"operand"];
+	composedMemory = [composedMemory stringByAppendingString:@" "];
 	composedMemory = [composedMemory stringByAppendingString:myMemoryCopy[@"waiting operation"]];
 	memoryContents.text = composedMemory;
-	
+	justPressedBinaryOperation = NO;
 }
 
 - (void)viewDidLoad

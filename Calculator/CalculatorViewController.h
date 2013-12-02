@@ -17,10 +17,12 @@
 	IBOutlet UILabel *memoryContents;
 	CalculatorBrain *brain;
 	BOOL userIsInTheMiddleOfTypingANumber;
+	BOOL justPressedBinaryOperation;
 }
 
 - (IBAction)digitPressed:(UIButton *)sender;
 - (IBAction)operationPressed:(UIButton *)sender;
+- (IBAction)binaryOperationPressed:(UIButton *)sender;
 - (IBAction)setVariableAsOperand:(UIButton *)sender;
 - (IBAction)evaluateTestExpressionPressed;
 - (IBAction)decimalPointPressed;
