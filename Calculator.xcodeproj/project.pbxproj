@@ -19,6 +19,7 @@
 		15B92D6117E63DA900386F7C /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15B92D5F17E63DA900386F7C /* MainStoryboard.storyboard */; };
 		15B92D6417E63DA900386F7C /* CalculatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15B92D6317E63DA900386F7C /* CalculatorViewController.m */; };
 		15B92D6C17E63EC100386F7C /* CalculatorBrain.m in Sources */ = {isa = PBXBuildFile; fileRef = 15B92D6B17E63EC100386F7C /* CalculatorBrain.m */; };
+		15C2D5F218405FC300E78825 /* CalculatorErrors.m in Sources */ = {isa = PBXBuildFile; fileRef = 15C2D5F118405FC300E78825 /* CalculatorErrors.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 		15B92D6A17E63EC100386F7C /* CalculatorBrain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalculatorBrain.h; sourceTree = "<group>"; };
 		15B92D6B17E63EC100386F7C /* CalculatorBrain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalculatorBrain.m; sourceTree = "<group>"; };
 		15B92D6D17EFE40F00386F7C /* CalculatorErrors.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalculatorErrors.h; sourceTree = "<group>"; };
+		15C2D5F118405FC300E78825 /* CalculatorErrors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalculatorErrors.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 				15B92D6B17E63EC100386F7C /* CalculatorBrain.m */,
 				15B92D4E17E63DA900386F7C /* Supporting Files */,
 				15B92D6D17EFE40F00386F7C /* CalculatorErrors.h */,
+				15C2D5F118405FC300E78825 /* CalculatorErrors.m */,
 			);
 			path = Calculator;
 			sourceTree = "<group>";
@@ -184,6 +187,7 @@
 				15B92D5417E63DA900386F7C /* main.m in Sources */,
 				15B92D5817E63DA900386F7C /* CalculatorAppDelegate.m in Sources */,
 				15B92D6417E63DA900386F7C /* CalculatorViewController.m in Sources */,
+				15C2D5F218405FC300E78825 /* CalculatorErrors.m in Sources */,
 				15B92D6C17E63EC100386F7C /* CalculatorBrain.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -216,7 +220,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
@@ -247,7 +251,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
@@ -307,6 +311,7 @@
 				15B92D6917E63DAA00386F7C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -14,6 +14,7 @@
 	NSString *waitingOperation;
 	double waitingOperand;
 	double valueStoredInMemory;
+	double internalOperand;
 	NSMutableArray *internalExpression;
 }
 

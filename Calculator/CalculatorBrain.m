@@ -10,19 +10,30 @@
 #define VARIABLE_PREFIX @"%"
 
 @implementation CalculatorBrain
-@synthesize operand;
+//@synthesize operand;
+
+- (void)setOperand:(double)operand
+{
+	//throw the operand into the expression array in case we later switch to variable mode
+	[internalExpression addObject:[NSNumber numberWithDouble:operand]];
+	internalOperand = operand;
+}
+- (double)operand
+{
+	return internalOperand;
+}
 
 - (void)performWaitingOperation:(NSError *)myError
 {
 	if ([@"+" isEqual:waitingOperation]) {
-		operand = waitingOperand + operand;
+		internalOperand = waitingOperand + internalOperand;
 	} else if ([@"-" isEqual:waitingOperation]) {
-		operand = waitingOperand - operand;
+		internalOperand = waitingOperand - internalOperand;
 	} else if ([@"*" isEqual:waitingOperation]) {
-		operand = waitingOperand * operand;
+		internalOperand = waitingOperand * internalOperand;
 	} else if ([@"/" isEqual:waitingOperation]) {
-		if (operand) {
-			operand = waitingOperand / operand;
+		if (internalOperand) {
+			internalOperand = waitingOperand / internalOperand;
 		}
 		else {
 			NSDictionary *userInfo = @{NSLocalizedDescriptionKey: @"Tried to divide by zero"};
@@ -35,15 +46,18 @@
 
 - (double)performOperation:(NSString *)operation withError:(NSError **)myError
 {
+	//throw the operation into the expression array in case we later switch to variable mode
+	[internalExpression addObject:operation];
+	
 	if ([operation isEqual:@"sqrt(x)"]) {
-		operand = sqrt(operand);
+		internalOperand = sqrt(internalOperand);
 	}
 	else if ([operation isEqual:@"x^2"]) {
-		operand = operand * operand;
+		internalOperand = internalOperand * internalOperand;
 	}
 	else if ([operation isEqual:@"1/x"]) {
-		if (operand) {
-			operand = 1 / operand;
+		if (internalOperand) {
+			internalOperand = 1 / internalOperand;
 		}
 		else {
 			NSDictionary *userInfo = @{NSLocalizedDescriptionKey: @"Tried to divide by zero"};
@@ -54,10 +68,10 @@
 
 	}
 	else if ([operation isEqual:@"STORE"]) {
-		valueStoredInMemory = operand;
+		valueStoredInMemory = internalOperand;
 	}
 	else if ([operation isEqual:@"RECALL"]) {
-		operand = valueStoredInMemory;
+		internalOperand = valueStoredInMemory;
 	}
 	else if ([operation isEqual:@"MEM +"]) {
 		waitingOperation = @"+";
@@ -67,14 +81,14 @@
 	else {
 		[self performWaitingOperation:*myError];
 		waitingOperation = operation;
-		waitingOperand = operand;
+		waitingOperand = internalOperand;
 	}
-	return operand;
+	return internalOperand;
 }
 
 - (void)clearAll
 {
-	operand = 0.0;
+	internalOperand = 0.0;
 	waitingOperation = nil;
 	waitingOperand = 0.0;
 	valueStoredInMemory = 0.0;
@@ -82,9 +96,9 @@
 
 - (NSDictionary *)exportMemory
 {
-	if (((operand != 0.0) || (waitingOperand != 0.0)) && (waitingOperation != nil)) {
+	if (((internalOperand != 0.0) || (waitingOperand != 0.0)) && (waitingOperation != nil)) {
 		NSDictionary *myMemoryContents = [[NSDictionary alloc] initWithObjectsAndKeys:
-										  [NSString stringWithFormat:@"%g", operand], @"operand",
+										  [NSString stringWithFormat:@"%g", internalOperand], @"operand",
 										  [NSString stringWithFormat:@"%g", waitingOperand], @"waiting operand",
 										  [NSString stringWithString:waitingOperation], @"waiting operation",
 										  nil];
@@ -99,6 +113,7 @@
 	NSString *stringForVariableOperand = VARIABLE_PREFIX;
 	stringForVariableOperand = [stringForVariableOperand stringByAppendingString:variableName];
 	//add this operand to the NSMutableArray representing our experession so far
+	if (!internalExpression) { internalExpression = [[NSMutableArray alloc] init]; }
 	[internalExpression addObject:stringForVariableOperand];
 }
 
@@ -114,9 +129,7 @@
 			}
 		}
 	}
-	NSSet* returnSet = [NSSet setWithSet:mutableSetOfVariables];
-	return returnSet;
-	[mutableSetOfVariables release];
+	return mutableSetOfVariables;
 }
 
 + (double)evaluateExpression:(id)anExpression usingVariableValues:(NSDictionary *)variables
@@ -127,8 +140,15 @@
 
 + (NSString *)descriptionOfExpression:(id)anExpression
 {
-	//TODO return a string for display that represents the expression array
-	return [NSString stringWithFormat:@"TODO"];
+	NSString* composedDescription = [[NSString alloc] init];
+	
+	for (id expressionElement in anExpression) {
+		//assuming that we can treat each id as an NSString...
+		composedDescription = [composedDescription stringByAppendingString:expressionElement];
+		composedDescription	= [composedDescription stringByAppendingString:@" "];
+	}
+	[composedDescription autorelease];
+	return composedDescription;
 }
 
 - (id) expression {

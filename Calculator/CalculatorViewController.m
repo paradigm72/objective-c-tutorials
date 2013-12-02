@@ -41,15 +41,8 @@
 	//get the digit from the text of the button
 	NSString *digit = sender.titleLabel.text;
 	
-	//if we're just adding digits, append to display delegate
-	if (userIsInTheMiddleOfTypingANumber) {
-		display.text = [display.text stringByAppendingString:digit];
-	}
-	//otherwise, set the display delegate and set flag
-	else {
-		display.text = digit;
-		userIsInTheMiddleOfTypingANumber = YES;
-	}
+	//add the digit to the operand and the display
+	[self updatePrimaryDisplayAndSetTypingNumberFlag:digit];
 	[self updateMemoryDisplay];
 }
 
@@ -61,15 +54,8 @@
 		return;
 	}
 	else {
-		//if we're just adding digits, append to display delegate
-		if (userIsInTheMiddleOfTypingANumber) {
-			display.text  = [display.text stringByAppendingString:@"."];
-		}
-		//otherwise, set the display delegate and set flag
-		else {
-			display.text = @".";
-			userIsInTheMiddleOfTypingANumber = YES;
-		}
+		//add the decimal point to the operand and the display
+		[self updatePrimaryDisplayAndSetTypingNumberFlag:@"."];
 	}
 	[self updateMemoryDisplay];
 }
@@ -102,7 +88,12 @@
 	if (myError.code == DivideByZeroError) {
 		errors.text = myError.localizedDescription;
 	}
-	display.text = [NSString stringWithFormat:@"%g", self.brain.operand];
+	
+	//update the primary display to show the result, but only if not in "variable mode"
+	if (![self inVariableMode])
+	{
+		display.text = [NSString stringWithFormat:@"%g", self.brain.operand];
+	}
 	[self updateMemoryDisplay];
 	[myError release];
 }
@@ -110,6 +101,8 @@
 - (IBAction)setVariableAsOperand:(UIButton *)sender
 {
 	[self.brain setVariableAsOperand:sender.titleLabel.text];
+	//this string cannot matter, since this puts us into variable mode
+	[self updatePrimaryDisplayAndSetTypingNumberFlag:@"n/a"];
 }
 
 - (IBAction)evaluateTestExpressionPressed;
@@ -140,14 +133,49 @@
 	[self updateMemoryDisplay];
 }
 
+- (void)updatePrimaryDisplayAndSetTypingNumberFlag:(NSString *)newText
+{
+	//if we're in variable mode, show the expression in the primary display slot:
+	if ([self inVariableMode]) {
+		display.text = [CalculatorBrain descriptionOfExpression:[self.brain expression]];
+	}
+	
+	//if we're just adding digits/decimalpoint, append to display delegate
+	if (userIsInTheMiddleOfTypingANumber) {
+		display.text  = [display.text stringByAppendingString:newText];
+	}
+	//otherwise, set the display delegate and set flag
+	else {
+		display.text = newText;
+		userIsInTheMiddleOfTypingANumber = YES;
+	}
+}
+
+- (BOOL)inVariableMode
+{
+	if ([self.brain expression] == nil)
+	{
+		return NO;
+	}
+	else
+	{
+		return ([[CalculatorBrain variablesInExpression:[self.brain expression]] count] > 0);
+	}
+}
+
 - (void)updateMemoryDisplay
 {
-	NSDictionary *myMemoryCopy = [self.brain exportMemory];
-	NSString *composedMemory = myMemoryCopy[@"operand"];
-	composedMemory = [composedMemory stringByAppendingString:@" "];
-	composedMemory = [composedMemory stringByAppendingString:myMemoryCopy[@"waiting operation"]];
-	memoryContents.text = composedMemory;
-	justPressedBinaryOperation = NO;
+	//Only show anything for memory if we're not in 'variable mode'. Haven't yet defined what memory would mean
+	//in that mode since we really only use the primary display.
+	if (![self inVariableMode])
+	{
+		NSDictionary *myMemoryCopy = [self.brain exportMemory];
+		NSString *composedMemory = myMemoryCopy[@"operand"];
+		composedMemory = [composedMemory stringByAppendingString:@" "];
+		composedMemory = [composedMemory stringByAppendingString:myMemoryCopy[@"waiting operation"]];
+		memoryContents.text = composedMemory;
+		justPressedBinaryOperation = NO;
+	}
 }
 
 - (void)viewDidLoad
