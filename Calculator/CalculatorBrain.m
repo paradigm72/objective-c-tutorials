@@ -92,6 +92,8 @@
 	waitingOperation = nil;
 	waitingOperand = 0.0;
 	valueStoredInMemory = 0.0;
+	internalExpression = nil;
+	[internalExpression release];
 }
 
 - (NSDictionary *)exportMemory
@@ -125,7 +127,7 @@
 		if ([thisElement isKindOfClass:[NSString class]]) {
 			NSString *tempString = [NSString stringWithString:thisElement];
 			if ([tempString characterAtIndex:0] == '%') {
-				[mutableSetOfVariables addObject:tempString];
+				[mutableSetOfVariables addObject:tempString];  //TODO pull out the % marker here (or maybe do it in the display...)
 			}
 		}
 	}
@@ -148,13 +150,13 @@
 		composedDescription = [composedDescription stringByAppendingString:expressionElement];
 		composedDescription	= [composedDescription stringByAppendingString:@" "];
 	}
-	[composedDescription autorelease];
+	//[composedDescription autorelease];  Do not auto-release this, it's an NSString which is immutable and auto-released already
 	return composedDescription;
 }
 
 - (id) expression {
 	NSMutableArray *expressionArrayCopy = [internalExpression copy];
-	[expressionArrayCopy autorelease];
+	//[expressionArrayCopy autorelease];
 	return expressionArrayCopy;
 }
 

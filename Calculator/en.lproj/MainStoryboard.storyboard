@@ -303,22 +303,8 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vb4-j9-YTt">
-                                <rect key="frame" x="20" y="333" width="70" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.71100957339787407" green="0.85108398534476781" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="70" id="ROl-5n-FNf"/>
-                                </constraints>
-                                <state key="normal" title="x">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="setVariableAsOperand:" destination="2" eventType="touchUpInside" id="Ldt-WP-Z4u"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4te-WO-A7J">
-                                <rect key="frame" x="125" y="333" width="70" height="30"/>
+                                <rect key="frame" x="120" y="280" width="70" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.71100957339787407" green="0.85108398534476781" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -331,8 +317,22 @@
                                     <action selector="setVariableAsOperand:" destination="2" eventType="touchUpInside" id="lHl-Dc-gTn"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DTW-be-a3Y">
+                                <rect key="frame" x="20" y="280" width="70" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.71100957340000004" green="0.85108398529999996" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="uYN-Dv-m4W"/>
+                                </constraints>
+                                <state key="normal" title="x">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="setVariableAsOperand:" destination="2" eventType="touchUpInside" id="Xd2-rD-mBW"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lEK-pQ-BgT">
-                                <rect key="frame" x="230" y="333" width="70" height="30"/>
+                                <rect key="frame" x="230" y="280" width="70" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.71100957339787407" green="0.85108398534476781" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -362,7 +362,6 @@
                             <constraint firstItem="9jM-5Z-xBs" firstAttribute="leading" secondItem="vJH-df-C6P" secondAttribute="leading" id="0zT-lz-0C8"/>
                             <constraint firstItem="2p7-PO-AU3" firstAttribute="baseline" secondItem="e8p-Ld-eT9" secondAttribute="baseline" priority="1" id="23Y-su-6Bx"/>
                             <constraint firstItem="e8p-Ld-eT9" firstAttribute="leading" secondItem="izl-Gj-9MG" secondAttribute="leading" id="2ve-gh-7uT"/>
-                            <constraint firstItem="rgv-vY-O6X" firstAttribute="top" secondItem="vb4-j9-YTt" secondAttribute="bottom" constant="8" symbolic="YES" id="7bg-kx-68F"/>
                             <constraint firstItem="5Ci-yS-wju" firstAttribute="top" secondItem="9jM-5Z-xBs" secondAttribute="bottom" constant="8" symbolic="YES" id="7pL-ed-k5x"/>
                             <constraint firstItem="tdN-hD-slg" firstAttribute="trailing" secondItem="flM-se-vef" secondAttribute="trailing" id="8VC-0y-1fw"/>
                             <constraint firstItem="9CX-cG-I2C" firstAttribute="top" secondItem="2p7-PO-AU3" secondAttribute="bottom" constant="8" symbolic="YES" id="8ta-0j-TBn"/>
@@ -382,7 +381,6 @@
                             <constraint firstItem="tdN-hD-slg" firstAttribute="top" secondItem="flM-se-vef" secondAttribute="bottom" constant="8" symbolic="YES" id="M75-5P-dIM"/>
                             <constraint firstItem="4te-WO-A7J" firstAttribute="top" secondItem="9CX-cG-I2C" secondAttribute="bottom" constant="8" symbolic="YES" id="NSW-fI-9Kb"/>
                             <constraint firstItem="lEK-pQ-BgT" firstAttribute="trailing" secondItem="5Zb-Sb-gUY" secondAttribute="trailing" id="P4s-fh-6VB"/>
-                            <constraint firstItem="4te-WO-A7J" firstAttribute="baseline" secondItem="vb4-j9-YTt" secondAttribute="baseline" id="PNk-4I-rDr"/>
                             <constraint firstItem="9jM-5Z-xBs" firstAttribute="top" secondItem="vJH-df-C6P" secondAttribute="bottom" constant="8" symbolic="YES" id="Phu-E7-3Ur"/>
                             <constraint firstItem="uZI-eS-z8V" firstAttribute="leading" secondItem="k7I-qQ-gUX" secondAttribute="trailing" constant="8" symbolic="YES" id="Pkw-5h-Sdm"/>
                             <constraint firstItem="GaK-ha-I47" firstAttribute="trailing" secondItem="5Zb-Sb-gUY" secondAttribute="trailing" id="Prw-sL-LCd"/>
@@ -399,7 +397,6 @@
                             <constraint firstItem="4te-WO-A7J" firstAttribute="centerX" secondItem="9CX-cG-I2C" secondAttribute="centerX" id="ZBk-3d-MSu"/>
                             <constraint firstItem="6X9-TY-oew" firstAttribute="trailing" secondItem="YDl-TZ-3rW" secondAttribute="trailing" id="ZYy-o5-Bwd"/>
                             <constraint firstItem="tdN-hD-slg" firstAttribute="baseline" secondItem="2Xh-ry-3Dp" secondAttribute="baseline" id="b16-2o-u2V"/>
-                            <constraint firstItem="rgv-vY-O6X" firstAttribute="leading" secondItem="vb4-j9-YTt" secondAttribute="leading" id="bET-Su-Dyy"/>
                             <constraint firstItem="wU2-a6-2fq" firstAttribute="leading" secondItem="2Xh-ry-3Dp" secondAttribute="trailing" constant="8" symbolic="YES" id="bQU-is-C7E"/>
                             <constraint firstItem="YDl-TZ-3rW" firstAttribute="baseline" secondItem="KJo-9t-RZq" secondAttribute="baseline" id="bpV-fP-AVC"/>
                             <constraint firstItem="GaK-ha-I47" firstAttribute="baseline" secondItem="2p7-PO-AU3" secondAttribute="baseline" priority="1" id="dnG-pT-NTP"/>
@@ -412,7 +409,6 @@
                             <constraint firstItem="2Xh-ry-3Dp" firstAttribute="leading" secondItem="nUr-rm-77X" secondAttribute="leading" id="gyy-2z-1z8"/>
                             <constraint firstItem="YDl-TZ-3rW" firstAttribute="trailing" secondItem="tdN-hD-slg" secondAttribute="trailing" id="h9J-wx-Add"/>
                             <constraint firstItem="ZEh-k0-zsH" firstAttribute="top" secondItem="e8p-Ld-eT9" secondAttribute="bottom" constant="8" symbolic="YES" id="hNO-Ij-QVn"/>
-                            <constraint firstItem="vb4-j9-YTt" firstAttribute="leading" secondItem="5Ci-yS-wju" secondAttribute="leading" id="hQU-7e-Zya"/>
                             <constraint firstItem="lEK-pQ-BgT" firstAttribute="top" secondItem="5Zb-Sb-gUY" secondAttribute="bottom" constant="8" symbolic="YES" id="hUg-Gh-n4P"/>
                             <constraint firstItem="izl-Gj-9MG" firstAttribute="leading" secondItem="wU2-a6-2fq" secondAttribute="leading" id="hWV-aC-1wT"/>
                             <constraint firstItem="Zhf-GG-vUa" firstAttribute="leading" secondItem="KJo-9t-RZq" secondAttribute="leading" id="ibT-lS-uKV"/>
