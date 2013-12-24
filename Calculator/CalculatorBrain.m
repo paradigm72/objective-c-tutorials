@@ -15,7 +15,8 @@
 - (void)setOperand:(double)operand
 {
 	//throw the operand into the expression array in case we later switch to variable mode
-	[internalExpression addObject:[NSNumber numberWithDouble:operand]];
+	if (!internalExpression) { internalExpression = [[NSMutableArray alloc] init]; }
+	[internalExpression addObject:[NSString stringWithFormat:@"%g", operand]];
 	internalOperand = operand;
 }
 - (double)operand
@@ -47,6 +48,7 @@
 - (double)performOrAppendOperation:(NSString *)operation withError:(NSError **)myError
 {
 	//throw the operation into the expression array in case we later switch to variable mode
+	if (!internalExpression) { internalExpression = [[NSMutableArray alloc] init]; }
 	[internalExpression addObject:operation];
 	
 	if ([operation isEqual:@"sqrt(x)"]) {
