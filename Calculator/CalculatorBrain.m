@@ -44,7 +44,7 @@
 	}
 }
 
-- (double)performOperation:(NSString *)operation withError:(NSError **)myError
+- (double)performOrAppendOperation:(NSString *)operation withError:(NSError **)myError
 {
 	//throw the operation into the expression array in case we later switch to variable mode
 	[internalExpression addObject:operation];
@@ -147,7 +147,14 @@
 	
 	for (id expressionElement in anExpression) {
 		//assuming that we can treat each id as an NSString...
-		composedDescription = [composedDescription stringByAppendingString:expressionElement];
+		NSString* stringToAppend = [NSString stringWithString:expressionElement];
+		
+		//strip off the leading % character
+		if ([stringToAppend characterAtIndex:0] == '%') {
+			stringToAppend = [stringToAppend stringByReplacingOccurrencesOfString:@"%" withString:@""];
+		}
+		
+		composedDescription = [composedDescription stringByAppendingString:stringToAppend];
 		composedDescription	= [composedDescription stringByAppendingString:@" "];
 	}
 	//[composedDescription autorelease];  Do not auto-release this, it's an NSString which is immutable and auto-released already

@@ -22,7 +22,7 @@
 @property (readonly) id expression;
 
 - (void)setVariableAsOperand:(NSString *)variableName;
-- (double)performOperation:(NSString *)operation withError:(NSError **)myError;
+- (double)performOrAppendOperation:(NSString *)operation withError:(NSError **)myError;
 - (NSDictionary *)exportMemory;
 - (void)clearAll;
 

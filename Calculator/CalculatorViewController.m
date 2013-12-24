@@ -83,7 +83,7 @@
 
 	NSString *operation = sender.titleLabel.text;
 
-	[self.brain performOperation:operation
+	[self.brain performOrAppendOperation:operation
 					   withError:&myError];
 	if (myError.code == DivideByZeroError) {
 		errors.text = myError.localizedDescription;
