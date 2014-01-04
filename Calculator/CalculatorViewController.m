@@ -170,7 +170,11 @@
 {
 	//Only show anything for memory if we're not in 'variable mode'. Haven't yet defined what memory would mean
 	//in that mode since we really only use the primary display.
-	if (![self inVariableMode])
+	if ([self inVariableMode])
+	{
+		memoryContents.text = @"";
+	}
+	else
 	{
 		NSDictionary *myMemoryCopy = [self.brain exportMemory];
 		NSString *composedMemory = myMemoryCopy[@"operand"];

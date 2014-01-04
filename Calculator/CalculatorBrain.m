@@ -49,7 +49,9 @@
 {
 	//throw the operation into the expression array in case we later switch to variable mode
 	if (!internalExpression) { internalExpression = [[NSMutableArray alloc] init]; }
-	[internalExpression addObject:operation];
+	if  (!([operation isEqual:@"="])) {   //if this is an equals sign, just skip it - has no meaning in an expression
+		[internalExpression addObject:operation];
+	}
 	
 	if ([operation isEqual:@"sqrt(x)"]) {
 		internalOperand = sqrt(internalOperand);
