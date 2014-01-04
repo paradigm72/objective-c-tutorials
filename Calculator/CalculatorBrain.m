@@ -131,7 +131,7 @@
 		if ([thisElement isKindOfClass:[NSString class]]) {
 			NSString *tempString = [NSString stringWithString:thisElement];
 			if ([tempString characterAtIndex:0] == '%') {
-				[mutableSetOfVariables addObject:tempString];  //TODO pull out the % marker here (or maybe do it in the display...)
+				[mutableSetOfVariables addObject:tempString];  //% marker is pulled out in the display
 			}
 		}
 	}
@@ -141,8 +141,33 @@
 
 + (double)evaluateExpression:(id)anExpression usingVariableValues:(NSDictionary *)variables
 {
-	//TODO return the value of the evaluation
-	return 0.0;
+	//can we actually instantiate an instance of the class inside a class method?
+	CalculatorBrain *myTempBrain = [[CalculatorBrain alloc] init];
+	NSError *myError;
+	myError = [[NSError alloc] init];
+	
+	//loop through the expression looking for variables
+	for (id thisElement in anExpression) {
+		if ([thisElement isKindOfClass:[NSString class]]) {
+			NSString *thisElementAsString = [NSString stringWithString:thisElement];
+			
+			//if this is a variable,
+			if ([thisElementAsString characterAtIndex:0] == '%') {    //TODO switch this over to the C constant
+				//find the object in the dictionary that matches the key
+				NSString *thisValue = [variables objectForKey:thisElementAsString];
+				[myTempBrain setOperand:thisValue.doubleValue];
+			}
+			//if this is an operation,
+			else
+			{
+				//actually perform it on our instance of the brain
+				[myTempBrain performOrAppendOperation:thisElementAsString withError:&myError];
+			}
+		}
+	}
+	double returnValue = [myTempBrain operand];
+	[myTempBrain release];
+	return returnValue;
 }
 
 + (NSString *)descriptionOfExpression:(id)anExpression

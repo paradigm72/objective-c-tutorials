@@ -113,8 +113,8 @@
 	//set up a dictionary of test values
 	NSArray *objects = [NSArray arrayWithObjects:@"2", @"3", @"1.756", nil];
 	NSArray *keys = [NSArray arrayWithObjects:[NSString stringWithFormat:@"%@x", VARIABLE_PREFIX],
-											  [NSString stringWithFormat:@"%@x", VARIABLE_PREFIX],
-											  [NSString stringWithFormat:@"%@x", VARIABLE_PREFIX],
+											  [NSString stringWithFormat:@"%@a", VARIABLE_PREFIX],
+											  [NSString stringWithFormat:@"%@b", VARIABLE_PREFIX],
 											  nil];
 	NSDictionary *testValues = [[NSDictionary alloc] initWithObjects:objects
 															 forKeys:keys];
