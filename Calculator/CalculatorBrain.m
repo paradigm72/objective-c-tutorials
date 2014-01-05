@@ -142,7 +142,7 @@
 + (double)evaluateExpression:(id)anExpression usingVariableValues:(NSDictionary *)variables
 {
 	//can we actually instantiate an instance of the class inside a class method?
-	CalculatorBrain *myTempBrain = [[CalculatorBrain alloc] init];
+	CalculatorBrain *myTempBrain = [[[CalculatorBrain alloc] init] autorelease];
 	NSError *myError;
 	myError = [[NSError alloc] init];
 	
@@ -150,12 +150,19 @@
 	for (id thisElement in anExpression) {
 		if ([thisElement isKindOfClass:[NSString class]]) {
 			NSString *thisElementAsString = [NSString stringWithString:thisElement];
-			
+			NSNumberFormatter *tempFormatter = [[[NSNumberFormatter alloc] init] autorelease];
+						
 			//if this is a variable,
 			if ([thisElementAsString characterAtIndex:0] == '%') {    //TODO switch this over to the C constant
 				//find the object in the dictionary that matches the key
 				NSString *thisValue = [variables objectForKey:thisElementAsString];
 				[myTempBrain setOperand:thisValue.doubleValue];
+			}
+			//if this is a literal,
+			else if ([tempFormatter numberFromString:thisElementAsString] != nil)
+			{
+				//add it as the operand
+				[myTempBrain setOperand:thisElementAsString.doubleValue];
 			}
 			//if this is an operation,
 			else
@@ -165,8 +172,11 @@
 			}
 		}
 	}
+	
+	//finally, force evaluation of any remaining waiting operands/operation by sending an '=' operation
+	[myTempBrain performOrAppendOperation:@"=" withError:&myError];
+	
 	double returnValue = [myTempBrain operand];
-	[myTempBrain release];
 	return returnValue;
 }
 

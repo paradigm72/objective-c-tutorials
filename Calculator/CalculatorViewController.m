@@ -120,12 +120,17 @@
 															 forKeys:keys];
 	
 	//run the evaluation (class method)
-	[CalculatorBrain evaluateExpression:[self.brain expression]
-					usingVariableValues:testValues];
 	
-	[objects release];
-	[keys release];
-	[testValues release];
+	double evaluationResult = [CalculatorBrain evaluateExpression:[self.brain expression]
+					usingVariableValues:testValues];
+	display.text = [NSString stringWithFormat:@"%g", evaluationResult];
+	
+	//[objects release];  //why don't these require releasing?
+	//[keys release];
+	//[testValues release];
+	
+	//once evaluation is done, clear the memory in the brain so that the next keypress will start a new workflow
+	[self.brain clearAll];
 }
 
 - (IBAction)clearAll
