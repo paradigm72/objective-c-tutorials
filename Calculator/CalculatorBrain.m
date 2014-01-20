@@ -109,6 +109,7 @@
 										  [NSString stringWithString:waitingOperation], @"waiting operation",
 										  nil];
 
+		[myMemoryContents autorelease];
 		return myMemoryContents;
 	}
 	return nil;
@@ -145,6 +146,7 @@
 	CalculatorBrain *myTempBrain = [[[CalculatorBrain alloc] init] autorelease];
 	NSError *myError;
 	myError = [[NSError alloc] init];
+	[myError autorelease];
 	
 	//loop through the expression looking for variables
 	for (id thisElement in anExpression) {
@@ -202,7 +204,7 @@
 
 - (id) expression {
 	NSMutableArray *expressionArrayCopy = [internalExpression copy];
-	//[expressionArrayCopy autorelease];
+	[expressionArrayCopy autorelease];
 	return expressionArrayCopy;
 }
 

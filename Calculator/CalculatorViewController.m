@@ -125,9 +125,9 @@
 					usingVariableValues:testValues];
 	display.text = [NSString stringWithFormat:@"%g", evaluationResult];
 	
-	//[objects release];  //why don't these require releasing?
+	//[objects release];  //why don't these require releasing? Because we didn't use "init..."?
 	//[keys release];
-	//[testValues release];
+	[testValues release];
 	
 	//once evaluation is done, clear the memory in the brain so that the next keypress will start a new workflow
 	[self.brain clearAll];
@@ -186,8 +186,10 @@
 		composedMemory = [composedMemory stringByAppendingString:@" "];
 		composedMemory = [composedMemory stringByAppendingString:myMemoryCopy[@"waiting operation"]];
 		memoryContents.text = composedMemory;
-		justPressedBinaryOperation = NO;
 	}
+	
+	//since this is triggered after an action that causes the board state to advance (display should change), now accept a binary operator:
+	justPressedBinaryOperation = NO;
 }
 
 - (void)viewDidLoad
