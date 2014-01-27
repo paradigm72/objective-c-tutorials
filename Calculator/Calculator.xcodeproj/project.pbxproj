@@ -62,7 +62,7 @@
 		15B92D3B17E63DA900386F7C = {
 			isa = PBXGroup;
 			children = (
-				15B92D4D17E63DA900386F7C /* Calculator */,
+				15B92D4D17E63DA900386F7C /* Classes */,
 				15B92D4617E63DA900386F7C /* Frameworks */,
 				15B92D4517E63DA900386F7C /* Products */,
 			);
@@ -86,7 +86,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		15B92D4D17E63DA900386F7C /* Calculator */ = {
+		15B92D4D17E63DA900386F7C /* Classes */ = {
 			isa = PBXGroup;
 			children = (
 				15B92D5617E63DA900386F7C /* CalculatorAppDelegate.h */,
@@ -100,6 +100,7 @@
 				15B92D6D17EFE40F00386F7C /* CalculatorErrors.h */,
 				15C2D5F118405FC300E78825 /* CalculatorErrors.m */,
 			);
+			name = Classes;
 			path = Calculator;
 			sourceTree = "<group>";
 		};
