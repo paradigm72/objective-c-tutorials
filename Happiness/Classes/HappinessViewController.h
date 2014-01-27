@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "FaceView.h"
+#import "AlternateDelegate.h"
 
 @interface HappinessViewController : UIViewController <FaceViewDelegate>
 {
@@ -22,6 +23,10 @@
 @property (retain) IBOutlet FaceView *faceView;
 
 - (IBAction)happinessChanged:(UISlider *)sender;
+
+- (IBAction)engageRandomSmiling:(UIButton *)sender;
+- (IBAction)disengageRandomSmiling:(UIButton *)sender;
+
 
 @end
 

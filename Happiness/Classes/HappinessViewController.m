@@ -46,6 +46,18 @@
 }
 
 
+- (IBAction)engageRandomSmiling:(UIButton *)sender
+{
+	self.faceView.delegate = [[AlternateDelegate alloc] init];
+}
+
+- (IBAction)disengageRandomSmiling:(UIButton *)sender
+{
+	self.faceView.delegate = nil;
+	self.faceView.delegate = self;
+}
+
+
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
