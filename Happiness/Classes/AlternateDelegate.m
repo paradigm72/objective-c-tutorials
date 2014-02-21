@@ -10,15 +10,20 @@
 #include <stdlib.h>
 
 @implementation AlternateDelegate
-
+@synthesize myParentVC;
 
 -(float)smileForFaceView:(FaceView *)requestor
 {
-	int r;
-	float smileValue;
-	r = arc4random() % 100;
-	smileValue = ((float)r-50) / 50;
 	return smileValue;
 }
+
+-(void)updateSmileValue
+{
+	int r;
+	r = arc4random() % 100;
+	smileValue = ((float)r-50) / 50;
+}
+
+
 
 @end

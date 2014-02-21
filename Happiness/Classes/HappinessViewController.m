@@ -48,7 +48,27 @@
 
 - (IBAction)engageRandomSmiling:(UIButton *)sender
 {
-	self.faceView.delegate = [[AlternateDelegate alloc] init];
+	if (!myAlternateDelegate) {
+		myAlternateDelegate = [[AlternateDelegate alloc] init];
+		[self startTimer];
+		myAlternateDelegate.myParentVC = self;
+	}
+	self.faceView.delegate = myAlternateDelegate;
+}
+
+-(void)startTimer
+{
+	myTimer = [NSTimer scheduledTimerWithTimeInterval:1.0
+											   target:self
+											 selector:@selector(processTimer:)
+											 userInfo:nil
+											  repeats:YES];
+}
+
+-(void)processTimer:(NSTimer *)caller
+{
+	[self updateUI];
+	[myAlternateDelegate updateSmileValue];
 }
 
 - (IBAction)disengageRandomSmiling:(UIButton *)sender

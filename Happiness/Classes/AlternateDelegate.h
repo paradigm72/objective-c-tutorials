@@ -9,7 +9,17 @@
 #import <Foundation/Foundation.h>
 #import "FaceView.h"
 
+
 @interface AlternateDelegate : NSObject <FaceViewDelegate>
+{
+
+	float smileValue;
+}
+
+
+@property (assign) UIViewController *myParentVC;
+
+- (void)updateSmileValue;
 
 
 @end
