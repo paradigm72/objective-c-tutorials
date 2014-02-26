@@ -10,4 +10,9 @@
 
 @interface PsychologistViewController : UIViewController
 
+
+-(IBAction)happy:(id)sender;
+-(IBAction)soso:(id)sender;
+-(IBAction)sad:(id)sender;
+
 @end

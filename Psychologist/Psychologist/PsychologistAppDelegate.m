@@ -7,6 +7,7 @@
 //
 
 #import "PsychologistAppDelegate.h"
+#import "PsychologistViewController.h"
 
 @implementation PsychologistAppDelegate
 
@@ -16,8 +17,12 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
 	
+	UINavigationController *navcon = [[UINavigationController alloc] init];
+	PsychologistViewController *pvc = [[PsychologistViewController alloc] init];
+	[navcon pushViewController:pvc animated:NO];
+	[pvc release];
 	
-	
+	[self.window addSubview:navcon.view];
     [self.window makeKeyAndVisible];
     return YES;
 }

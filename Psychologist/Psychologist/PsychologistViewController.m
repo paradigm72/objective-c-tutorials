@@ -7,6 +7,7 @@
 //
 
 #import "PsychologistViewController.h"
+#import "HappinessViewController.h"
 
 @interface PsychologistViewController ()
 
@@ -21,6 +22,29 @@
         // Custom initialization
     }
     return self;
+}
+
+-(IBAction)happy:(id)sender
+{
+	[self showDiagnosis:100];
+}
+
+-(IBAction)soso:(id)sender
+{
+	[self showDiagnosis:50];
+}
+
+-(IBAction)sad:(id)sender
+{
+	[self showDiagnosis:0];
+}
+
+- (void)showDiagnosis:(int)diagnosisValue
+{
+	HappinessViewController *hvc = [[HappinessViewController alloc] init];
+	hvc.happiness = diagnosisValue;
+	[self.navigationController pushViewController:hvc animated:YES];
+	[hvc release];
 }
 
 - (void)viewDidLoad
