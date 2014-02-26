@@ -51,6 +51,8 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+	self.navigationController.navigationBar.translucent = NO;
+	self.title = @"Psychologist";
 }
 
 - (void)didReceiveMemoryWarning

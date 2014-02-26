@@ -51,7 +51,6 @@
 	if (!myAlternateDelegate) {
 		myAlternateDelegate = [[AlternateDelegate alloc] init];
 		[self startTimer];
-		myAlternateDelegate.myParentVC = self;
 	}
 	self.faceView.delegate = myAlternateDelegate;
 }
@@ -67,8 +66,9 @@
 
 -(void)processTimer:(NSTimer *)caller
 {
-	[self updateUI];
+	
 	[myAlternateDelegate updateSmileValue];
+	[self updateUI];
 }
 
 - (IBAction)disengageRandomSmiling:(UIButton *)sender
@@ -82,6 +82,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	self.faceView.delegate = self;
+	self.title = @"Happiness";
 	[self updateUI];
 }
 
@@ -99,7 +100,7 @@
 
 - (void)dealloc {
 	[self releaseOutlets];
-    //[super dealloc];
+    [super dealloc];
 }
 
 @end

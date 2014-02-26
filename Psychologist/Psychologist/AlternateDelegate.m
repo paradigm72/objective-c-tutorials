@@ -10,7 +10,6 @@
 #include <stdlib.h>
 
 @implementation AlternateDelegate
-@synthesize myParentVC;
 
 -(float)smileForFaceView:(FaceView *)requestor
 {

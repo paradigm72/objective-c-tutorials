@@ -17,8 +17,6 @@
 }
 
 
-@property (assign) UIViewController *myParentVC;
-
 - (void)updateSmileValue;
 
 
