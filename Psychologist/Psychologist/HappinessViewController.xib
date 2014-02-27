@@ -7,8 +7,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HappinessViewController">
             <connections>
+                <outlet property="controlledButton" destination="r3T-Mc-caT" id="ycV-MD-g1J"/>
                 <outlet property="faceView" destination="8" id="xeS-f8-XUC"/>
-                <outlet property="slider" destination="SP0-3Q-xEU" id="AqY-Nq-TL0"/>
+                <outlet property="randomButton" destination="cY6-2a-VFF" id="Rbc-Z3-2Va"/>
+                <outlet property="slider" destination="SP0-3Q-xEU" id="cLN-Xe-89b"/>
                 <outlet property="view" destination="6" id="kS2-jc-cgV"/>
             </connections>
         </placeholder>

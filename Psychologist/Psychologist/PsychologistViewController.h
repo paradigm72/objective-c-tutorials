@@ -14,5 +14,6 @@
 -(IBAction)happy:(id)sender;
 -(IBAction)soso:(id)sender;
 -(IBAction)sad:(id)sender;
+-(IBAction)manualSmile:(id)sender;
 
 @end

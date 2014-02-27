@@ -13,6 +13,20 @@
 @synthesize faceView, slider;
 
 
+- (id)initWithHardcodedSmile:(int)initialHappiness
+{
+	allowSmileChanges = NO;
+	happiness = initialHappiness;
+	return [super init];
+}
+
+//default initializer does allow changing the smile value in the UI
+- (id)init
+{
+	allowSmileChanges = YES;
+	return [super init];
+}
+
 - (int)happiness
 {
 	return happiness;
@@ -29,6 +43,10 @@
 
 - (void)updateUI
 {
+	[self.randomButton setHidden:(!allowSmileChanges)];
+	[self.controlledButton setHidden:(!allowSmileChanges)];
+	[self.slider setHidden:(!allowSmileChanges)];
+	
 	self.slider.value = self.happiness;
 	[self.faceView setNeedsDisplay];
 }

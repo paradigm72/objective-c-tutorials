@@ -39,9 +39,23 @@
 	[self showDiagnosis:0];
 }
 
-- (void)showDiagnosis:(int)diagnosisValue
+-(IBAction)manualSmile:(id)sender
+{
+	[self showSmileyFace];
+}
+
+
+- (void)showSmileyFace
 {
 	HappinessViewController *hvc = [[HappinessViewController alloc] init];
+	[self.navigationController pushViewController:hvc animated:YES];
+	[hvc release];
+}
+
+
+- (void)showDiagnosis:(int)diagnosisValue
+{
+	HappinessViewController *hvc = [[HappinessViewController alloc] initWithHardcodedSmile:diagnosisValue];
 	hvc.happiness = diagnosisValue;
 	[self.navigationController pushViewController:hvc animated:YES];
 	[hvc release];
