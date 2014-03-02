@@ -8,7 +8,7 @@
             <connections>
                 <outlet property="display" destination="yo0-Wn-GzV" id="e1u-O4-Dnm"/>
                 <outlet property="errors" destination="4QM-eG-9e5" id="pR9-W1-f2m"/>
-                <outlet property="memoryContents" destination="iWa-aX-fYb" id="ctO-Te-3uD"/>
+                <outlet property="memoryContents" destination="iWa-aX-fYb" id="bTr-hQ-vrc"/>
                 <outlet property="view" destination="1" id="iF5-tM-Cgm"/>
             </connections>
         </placeholder>
@@ -219,7 +219,7 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="setVariableAsOperand:" destination="-1" eventType="touchUpInside" id="Suf-JH-eb6"/>
+                        <action selector="variablePressed:" destination="-1" eventType="touchUpInside" id="iCC-kJ-ATC"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="krf-js-wKI">
@@ -230,7 +230,7 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="setVariableAsOperand:" destination="-1" eventType="touchUpInside" id="Q0o-SM-8wm"/>
+                        <action selector="variablePressed:" destination="-1" eventType="touchUpInside" id="kMH-z4-dgP"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VtR-1j-cjR">
@@ -241,7 +241,7 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="setVariableAsOperand:" destination="-1" eventType="touchUpInside" id="7uC-gE-20p"/>
+                        <action selector="variablePressed:" destination="-1" eventType="touchUpInside" id="pET-WW-muj"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GcE-1K-6Dq">

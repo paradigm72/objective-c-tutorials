@@ -24,7 +24,7 @@
 - (IBAction)digitPressed:(UIButton *)sender;
 - (IBAction)operationPressed:(UIButton *)sender;
 - (IBAction)binaryOperationPressed:(UIButton *)sender;
-- (IBAction)setVariableAsOperand:(UIButton *)sender;
+- (IBAction)variablePressed:(UIButton *)sender;
 - (IBAction)evaluateTestExpressionPressed;
 - (IBAction)decimalPointPressed;
 - (IBAction)clearAll;

@@ -43,7 +43,9 @@
 	NSString *digit = sender.titleLabel.text;
 	
 	//add the digit to the operand and the display
-	[self updatePrimaryDisplayAndSetTypingNumberFlag:digit];
+	[self refreshDisplay:digit];
+	userIsInTheMiddleOfTypingANumber = YES;
+	[self addDigitToInputBuffer:digit];
 	[self updateMemoryDisplay];
 }
 
@@ -56,7 +58,7 @@
 	}
 	else {
 		//add the decimal point to the operand and the display
-		[self updatePrimaryDisplayAndSetTypingNumberFlag:@"."];
+		[self refreshDisplay:@"."];
 	}
 	[self updateMemoryDisplay];
 }
@@ -76,18 +78,24 @@
 {
 	//if we were typing digits, and now hit an operator, go to waiting state
 	if (userIsInTheMiddleOfTypingANumber) {
-		if ([self inVariableMode])
+		
+		//*pmr++ 3/1/14 - I think this is wrong, because the variables come in via variablePressed
+		//should never need to call setVariableAsOperand outside of that action
+		/*if ([self inVariableMode])
 		{
 			//if we're in variable mode, append to expression
 			[self.brain setVariableAsOperand:inputBuffer];
 			inputBuffer = nil;
 		}
 		else
-		{
+		{*/
 			//otherwise, set as the operand
-			self.brain.operand = [inputBuffer doubleValue];
-			inputBuffer = nil;
-		}
+			if (inputBuffer != nil)
+			{
+				self.brain.operand = [inputBuffer doubleValue];
+				inputBuffer = nil;
+			}
+		/*}*/
 		userIsInTheMiddleOfTypingANumber = NO;
 	}
 	NSError *myError;
@@ -106,15 +114,20 @@
 	{
 		display.text = [NSString stringWithFormat:@"%g", self.brain.operand];
 	}
+	else
+	{
+		//if we are in variable mode, update the display
+		[self refreshDisplay:nil];
+	}
 	[self updateMemoryDisplay];
 	[myError release];
 }
 
-- (IBAction)setVariableAsOperand:(UIButton *)sender
+- (IBAction)variablePressed:(UIButton *)sender
 {
 	[self.brain setVariableAsOperand:sender.titleLabel.text];
-	//this string cannot matter, since this puts us into variable mode
-	[self updatePrimaryDisplayAndSetTypingNumberFlag:@"n/a"];
+	userIsInTheMiddleOfTypingANumber = YES;
+	[self refreshDisplay:nil];
 	
 	//since the memory display is not active in variable mode, need to update it now
 	[self updateMemoryDisplay];
@@ -153,33 +166,40 @@
 	[self updateMemoryDisplay];
 }
 
-- (void)updatePrimaryDisplayAndSetTypingNumberFlag:(NSString *)newText
+
+- (void)refreshDisplay:(NSString *)appendNewText
 {
-	//if we're in variable mode, show the expression in the primary display slot:
+	//if we're in variable mode, refresh the expression in the primary display slot:
 	if ([self inVariableMode]) {
 		display.text = [CalculatorBrain descriptionOfExpression:[self.brain expression]];
 	}
 	
 	//if we're just adding digits/decimalpoint, append to display delegate
 	else if (userIsInTheMiddleOfTypingANumber) {
-		display.text  = [display.text stringByAppendingString:newText];
+		display.text  = [display.text stringByAppendingString:appendNewText];
 	}
 	//otherwise, set the display delegate and set flag
 	else {
-		display.text = newText;
-		userIsInTheMiddleOfTypingANumber = YES;
-	}
-	
-	//for either mode, add the new text to the input buffer
-	if (!inputBuffer)
-	{
-		inputBuffer = [[NSMutableString alloc] initWithString:newText];
-	}
-	else
-	{
-		[inputBuffer appendString:newText];
+		display.text = appendNewText;
 	}
 }
+
+- (void)addDigitToInputBuffer:(NSString *)digitToAdd
+{
+	//for either mode, add the new text to the input buffer
+	if (!(digitToAdd == nil))
+	{
+		if (!inputBuffer)
+		{
+			inputBuffer = [[NSMutableString alloc] initWithString:digitToAdd];
+		}
+		else
+		{
+			[inputBuffer appendString:digitToAdd];
+		}
+	}
+}
+
 
 - (BOOL)inVariableMode
 {
