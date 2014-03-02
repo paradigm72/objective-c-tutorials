@@ -79,14 +79,14 @@
 		if ([self inVariableMode])
 		{
 			//if we're in variable mode, append to expression
-			//TODO: doesn't work because display.text doesn't hold the number
-			//need some other buffer to store this when display.text is taken over by expression
-			[self.brain setVariableAsOperand:display.text];
+			[self.brain setVariableAsOperand:inputBuffer];
+			inputBuffer = nil;
 		}
 		else
 		{
 			//otherwise, set as the operand
-			self.brain.operand = display.text.doubleValue;
+			self.brain.operand = [inputBuffer doubleValue];
+			inputBuffer = nil;
 		}
 		userIsInTheMiddleOfTypingANumber = NO;
 	}
@@ -168,6 +168,16 @@
 	else {
 		display.text = newText;
 		userIsInTheMiddleOfTypingANumber = YES;
+	}
+	
+	//for either mode, add the new text to the input buffer
+	if (!inputBuffer)
+	{
+		inputBuffer = [[NSMutableString alloc] initWithString:newText];
+	}
+	else
+	{
+		[inputBuffer appendString:newText];
 	}
 }
 

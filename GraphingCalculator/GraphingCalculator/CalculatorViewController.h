@@ -18,6 +18,7 @@
 	CalculatorBrain *brain;
 	BOOL userIsInTheMiddleOfTypingANumber;
 	BOOL justPressedBinaryOperation;
+	NSMutableString *inputBuffer;
 }
 
 - (IBAction)digitPressed:(UIButton *)sender;
