@@ -28,5 +28,6 @@
 - (IBAction)evaluateTestExpressionPressed;
 - (IBAction)decimalPointPressed;
 - (IBAction)clearAll;
+- (IBAction)graphPressed;
 
 @end

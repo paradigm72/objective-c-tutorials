@@ -7,6 +7,7 @@
 //
 
 #import "CalculatorViewController.h"
+#import "GraphAndZoomViewController.h"
 #define VARIABLE_PREFIX @"%"
 
 @interface CalculatorViewController()
@@ -158,6 +159,14 @@
 	[self.brain clearAll];
 }
 
+- (IBAction)graphPressed
+{
+	GraphAndZoomViewController *gVc = [[GraphAndZoomViewController alloc] init];
+	self.navigationController.navigationBarHidden = NO;
+	[self.navigationController pushViewController:gVc animated:YES];
+	[gVc release];
+}
+
 - (IBAction)clearAll
 {
 	[self.brain clearAll];
@@ -237,7 +246,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+ 	// Do any additional setup after loading the view, typically from a nib.
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+	self.navigationController.navigationBarHidden = YES;
 }
 
 - (void)didReceiveMemoryWarning
