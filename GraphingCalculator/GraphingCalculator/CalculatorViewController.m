@@ -161,10 +161,12 @@
 
 - (IBAction)graphPressed
 {
-	GraphAndZoomViewController *gVc = [[GraphAndZoomViewController alloc] init];
+	GraphAndZoomViewController *myGVC = [[GraphAndZoomViewController alloc] init];
+	myGVC.title = [CalculatorBrain descriptionOfExpression:[self.brain expression]];
+	myGVC.expression = [self.brain expression];
 	self.navigationController.navigationBarHidden = NO;
-	[self.navigationController pushViewController:gVc animated:YES];
-	[gVc release];
+	[self.navigationController pushViewController:myGVC animated:YES];
+	[myGVC release];
 }
 
 - (IBAction)clearAll

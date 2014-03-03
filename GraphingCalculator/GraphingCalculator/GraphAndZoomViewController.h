@@ -10,4 +10,8 @@
 
 @interface GraphAndZoomViewController : UIViewController
 
+
+@property (strong, nonatomic) id expression;
+@property (nonatomic) double scale;
+
 @end

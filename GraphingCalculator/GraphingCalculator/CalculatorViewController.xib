@@ -212,7 +212,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JAS-bN-4lF">
-                    <rect key="frame" x="20" y="207" width="57" height="33"/>
+                    <rect key="frame" x="20" y="220" width="57" height="33"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.71100957340000004" green="0.85108398529999996" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <state key="normal" title="x">
@@ -222,30 +222,8 @@
                         <action selector="variablePressed:" destination="-1" eventType="touchUpInside" id="iCC-kJ-ATC"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="krf-js-wKI">
-                    <rect key="frame" x="91" y="206" width="60" height="34"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.71100957340000004" green="0.85108398529999996" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    <state key="normal" title="a">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="variablePressed:" destination="-1" eventType="touchUpInside" id="kMH-z4-dgP"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VtR-1j-cjR">
-                    <rect key="frame" x="164" y="205" width="48" height="35"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.71100957340000004" green="0.85108398529999996" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    <state key="normal" title="b">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="variablePressed:" destination="-1" eventType="touchUpInside" id="pET-WW-muj"/>
-                    </connections>
-                </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GcE-1K-6Dq">
-                    <rect key="frame" x="20" y="248" width="131" height="35"/>
+                    <rect key="frame" x="20" y="261" width="131" height="35"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.71100957340000004" green="0.85108398529999996" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <state key="normal" title="Test expression">
@@ -274,7 +252,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OB8-2I-Ewq">
-                    <rect key="frame" x="220" y="251" width="64" height="30"/>
+                    <rect key="frame" x="220" y="264" width="64" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.71100957340000004" green="0.85108398529999996" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <state key="normal" title="Graph">
@@ -282,6 +260,17 @@
                     </state>
                     <connections>
                         <action selector="graphPressed" destination="-1" eventType="touchUpInside" id="Azg-AY-kEI"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tpJ-5o-ZbG">
+                    <rect key="frame" x="20" y="178" width="57" height="34"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="1" green="0.98510574240000004" blue="0.53494690300000003" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="C">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="clearAll" destination="-1" eventType="touchUpInside" id="eQJ-fT-De5"/>
                     </connections>
                 </button>
             </subviews>

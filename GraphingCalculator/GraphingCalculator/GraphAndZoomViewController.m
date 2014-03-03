@@ -26,6 +26,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+	self.scale = 14;
     // Do any additional setup after loading the view from its nib.
 }
 

@@ -26,6 +26,7 @@
 		15823F3F18C18C6200254453 /* CalculatorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15823F3E18C18C6200254453 /* CalculatorViewController.xib */; };
 		15823F4318C2F3DA00254453 /* GraphAndZoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15823F4118C2F3DA00254453 /* GraphAndZoomViewController.m */; };
 		15823F4418C2F3DA00254453 /* GraphAndZoomViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15823F4218C2F3DA00254453 /* GraphAndZoomViewController.xib */; };
+		15823F4818C42A9300254453 /* GraphAndZoomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 15823F4718C42A9300254453 /* GraphAndZoomView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,8 @@
 		15823F4018C2F3DA00254453 /* GraphAndZoomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphAndZoomViewController.h; sourceTree = "<group>"; };
 		15823F4118C2F3DA00254453 /* GraphAndZoomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphAndZoomViewController.m; sourceTree = "<group>"; };
 		15823F4218C2F3DA00254453 /* GraphAndZoomViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GraphAndZoomViewController.xib; sourceTree = "<group>"; };
+		15823F4618C42A9300254453 /* GraphAndZoomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphAndZoomView.h; sourceTree = "<group>"; };
+		15823F4718C42A9300254453 /* GraphAndZoomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphAndZoomView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,6 +198,8 @@
 			children = (
 				15823F4018C2F3DA00254453 /* GraphAndZoomViewController.h */,
 				15823F4118C2F3DA00254453 /* GraphAndZoomViewController.m */,
+				15823F4618C42A9300254453 /* GraphAndZoomView.h */,
+				15823F4718C42A9300254453 /* GraphAndZoomView.m */,
 			);
 			name = GraphAndZoom;
 			sourceTree = "<group>";
@@ -299,6 +304,7 @@
 			files = (
 				15823F0B18C1859100254453 /* GraphingCalculatorAppDelegate.m in Sources */,
 				15823F2E18C185B300254453 /* AxesDrawer.m in Sources */,
+				15823F4818C42A9300254453 /* GraphAndZoomView.m in Sources */,
 				15823F3818C1863E00254453 /* CalculatorViewController.m in Sources */,
 				15823F3618C1863E00254453 /* CalculatorBrain.m in Sources */,
 				15823F3718C1863E00254453 /* CalculatorErrors.m in Sources */,
