@@ -36,4 +36,17 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+- (IBAction)scaleUp
+{
+	self.scale = self.scale * 2;
+	[self.view setNeedsDisplay];
+}
+
+- (IBAction)scaleDown
+{
+	self.scale = self.scale / 2;
+	[self.view setNeedsDisplay];
+}
+
 @end

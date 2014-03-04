@@ -14,4 +14,8 @@
 @property (strong, nonatomic) id expression;
 @property (nonatomic) double scale;
 
+
+-(IBAction)scaleDown;
+-(IBAction)scaleUp;
+
 @end
