@@ -35,10 +35,25 @@
 
 - (void)drawCurveInRect:(CGRect)rect withScale:(CGFloat)pointsPerUnit
 {
-	for (int xVal = rect.origin.x; xVal <= (int)rect.size.width; xVal += 1) {
+	CGContextRef context = UIGraphicsGetCurrentContext();
+	CGContextBeginPath(context);
+	CGFloat previousX = rect.origin.x, previousY = rect.origin.y;
+	
+	for (CGFloat pixelX = rect.origin.x; pixelX <= (int)rect.size.width; pixelX += 1) {
 		//draw a point at the correct y value after evaluating the expression
-		NSLog([NSString stringWithFormat:@"%d", xVal]);
+		//NSLog([NSString stringWithFormat:@"%d", xVal]);
+		
+		CGFloat logicalX = (pixelX - rect.size.width / 2) / pointsPerUnit;
+		CGFloat logicalY = [self.delegate Yvalue:self forXValue:logicalX];
+		CGFloat pixelY = (- logicalY * pointsPerUnit + rect.size.height / 2);
+			
+		CGContextMoveToPoint(context, pixelX, pixelY);
+		CGContextAddLineToPoint(context, previousX, previousY);
+		
+		previousX = pixelX, previousY = pixelY;
 	}
+	
+	CGContextStrokePath(context);
 }
 
 
