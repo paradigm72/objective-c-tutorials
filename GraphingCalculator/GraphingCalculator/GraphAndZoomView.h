@@ -13,6 +13,7 @@
 
 @protocol GraphAndZoomViewDelegate
 - (float)scaleForView:(GraphAndZoomView *)requestor;
+- (float)Yvalue:(GraphAndZoomView *)requestor forXValue:(float)xValue;
 @end
 
 

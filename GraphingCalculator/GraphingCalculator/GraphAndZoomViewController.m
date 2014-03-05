@@ -7,6 +7,7 @@
 //
 
 #import "GraphAndZoomViewController.h"
+#define VARIABLE_PREFIX @"%"
 
 @interface GraphAndZoomViewController ()
 
@@ -19,6 +20,18 @@
 - (float)scaleForView:(GraphAndZoomView *)requestor
 {
 	return self.scale;
+}
+
+- (float)Yvalue:(GraphAndZoomView *)requestor forXValue:(float)xValue
+{
+	//insert our current value for x as the test value for expression evaluation
+	NSArray *objects = [NSArray arrayWithObjects:[NSNumber numberWithFloat:xValue], nil];
+	NSArray *keys = [NSArray arrayWithObjects:[NSString stringWithFormat:@"%@x", VARIABLE_PREFIX], nil];
+	NSDictionary *testValues = [[NSDictionary alloc] initWithObjects:objects
+															 forKeys:keys];
+	
+	//evaluate the expression (determing the y value) and return it to the view
+	return [CalculatorBrain evaluateExpression:self.expression usingVariableValues:testValues];
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil

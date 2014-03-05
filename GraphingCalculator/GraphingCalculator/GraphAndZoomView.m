@@ -30,6 +30,15 @@
 	centerPoint.x = self.bounds.size.width / 2;
 	centerPoint.y = self.bounds.size.height / 2;
 	[AxesDrawer drawAxesInRect:self.frame originAtPoint:centerPoint scale:[self.delegate scaleForView:self]];
+	[self drawCurveInRect:rect withScale:[self.delegate scaleForView:self]];
+}
+
+- (void)drawCurveInRect:(CGRect)rect withScale:(CGFloat)pointsPerUnit
+{
+	for (int xVal = rect.origin.x; xVal <= (int)rect.size.width; xVal += 1) {
+		//draw a point at the correct y value after evaluating the expression
+		NSLog([NSString stringWithFormat:@"%d", xVal]);
+	}
 }
 
 

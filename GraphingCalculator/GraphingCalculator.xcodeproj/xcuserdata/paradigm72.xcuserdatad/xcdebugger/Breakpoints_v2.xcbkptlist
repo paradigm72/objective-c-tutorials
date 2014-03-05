@@ -51,5 +51,51 @@
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GraphingCalculator/GraphAndZoomView.m"
+            timestampString = "415685954.019803"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "-drawCurveInRect:withScale:"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[GraphAndZoomView drawCurveInRect:withScale:]"
+                  moduleName = "GraphingCalculator"
+                  urlString = "file://localhost/Users/paradigm72/Documents/ObjectiveCTutorials/ObjectiveCTutorials/GraphingCalculator/GraphingCalculator/GraphAndZoomView.m"
+                  timestampString = "415685984.647458"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "38"
+                  endingLineNumber = "38"
+                  offsetFromSymbolStart = "39">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[GraphAndZoomView drawCurveInRect:withScale:]"
+                  moduleName = "GraphingCalculator"
+                  urlString = "file://localhost/Users/paradigm72/Documents/ObjectiveCTutorials/ObjectiveCTutorials/GraphingCalculator/GraphingCalculator/GraphAndZoomView.m"
+                  timestampString = "415685984.647695"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "38"
+                  endingLineNumber = "38"
+                  offsetFromSymbolStart = "124">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

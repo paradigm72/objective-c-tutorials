@@ -8,16 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "GraphAndZoomView.h"
+#import "CalculatorBrain.h"
 
 @interface GraphAndZoomViewController : UIViewController <GraphAndZoomViewDelegate>
-{
-	GraphAndZoomView *myGraphZoomView;
-}
-@property (strong, nonatomic) id expression;
+@property (strong, nonatomic) id expression;  //TODO double-check these modifiers
 @property (nonatomic) double scale;
 @property (retain) IBOutlet GraphAndZoomView *myGraphZoomView;
 
 - (float)scaleForView:(GraphAndZoomView *)requestor;
+- (float)Yvalue:(GraphAndZoomView *)requestor forXValue:(float)xValue;
 
 -(IBAction)scaleDown;
 -(IBAction)scaleUp;
