@@ -7,13 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GraphAndZoomView.h"
 
-@interface GraphAndZoomViewController : UIViewController
-
-
+@interface GraphAndZoomViewController : UIViewController <GraphAndZoomViewDelegate>
+{
+	GraphAndZoomView *myGraphZoomView;
+}
 @property (strong, nonatomic) id expression;
 @property (nonatomic) double scale;
+@property (retain) IBOutlet GraphAndZoomView *myGraphZoomView;
 
+- (float)scaleForView:(GraphAndZoomView *)requestor;
 
 -(IBAction)scaleDown;
 -(IBAction)scaleUp;

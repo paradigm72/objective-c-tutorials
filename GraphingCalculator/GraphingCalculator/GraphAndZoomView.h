@@ -9,6 +9,19 @@
 #import <UIKit/UIKit.h>
 #import "AxesDrawer.h"
 
+@class GraphAndZoomView;
+
+@protocol GraphAndZoomViewDelegate
+- (float)scaleForView:(GraphAndZoomView *)requestor;
+@end
+
+
+
 @interface GraphAndZoomView : UIView
+{
+	id <GraphAndZoomViewDelegate> delegate;
+}
+
+@property (retain) id <GraphAndZoomViewDelegate> delegate;
 
 @end

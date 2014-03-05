@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GraphAndZoomViewController">
             <connections>
+                <outlet property="myGraphZoomView" destination="1" id="k7N-jd-yFR"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
         </placeholder>

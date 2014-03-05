@@ -9,6 +9,7 @@
 #import "GraphAndZoomView.h"
 
 @implementation GraphAndZoomView
+@synthesize delegate;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -28,8 +29,7 @@
 	CGPoint centerPoint;
 	centerPoint.x = self.bounds.size.width / 2;
 	centerPoint.y = self.bounds.size.height / 2;
-	[AxesDrawer drawAxesInRect:self.frame originAtPoint:centerPoint scale:14];  //todo how to pass scale from controller?
-	
+	[AxesDrawer drawAxesInRect:self.frame originAtPoint:centerPoint scale:[self.delegate scaleForView:self]];
 }
 
 
